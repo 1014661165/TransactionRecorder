@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">交易记录app</string>
+
+    <!-- MainActivity-->
+    <string name="search_btn_text">搜索</string>
+    <string name="create_new_order_option_text">新建订单</string>
+    <string name="look_item_option_text">查看商品</string>
+    <string name="date_hint">请输入日期(xxxx-xx-xx)</string>
+
+
+    <!-- CreateItemActivity -->
+    <string name="item_name_label_text">商品名称:</string>
+    <string name="item_price_label_text">商品单价:</string>
+    <string name="add_item_btn_text">添加</string>
+
+    <!-- LookItemActivity -->
+    <string name="create_new_item_option_text">添加商品</string>
+
+</resources>

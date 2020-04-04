@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateItemActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/item_name_label"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/item_name_label_text"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:gravity="start"/>
+
+    <EditText
+        android:id="@+id/item_name_input"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:id="@+id/item_price_label"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/item_price_label_text"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:gravity="start"/>
+
+    <EditText
+        android:id="@+id/item_price_input"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <Button
+        android:id="@+id/add_item_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/add_item_btn_text"
+        android:textColor="@color/black"
+        android:textSize="20sp"/>
+
+</LinearLayout>

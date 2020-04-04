@@ -6,14 +6,21 @@
     <string name="create_new_order_option_text">新建订单</string>
     <string name="look_item_option_text">查看商品</string>
     <string name="date_hint">请输入日期(xxxx-xx-xx)</string>
+    <string name="main_activity_label">主页</string>
 
 
     <!-- CreateItemActivity -->
     <string name="item_name_label_text">商品名称:</string>
     <string name="item_price_label_text">商品单价:</string>
     <string name="add_item_btn_text">添加</string>
+    <string name="create_item_activity_label">新建商品</string>
 
     <!-- LookItemActivity -->
     <string name="create_new_item_option_text">添加商品</string>
+    <string name="look_item_activity_label">浏览商品</string>
+    <string name="delete_item_view_text">删除</string>
+
+    <!-- CreateOrderActivity -->
+    <string name="create_order_activity_label">新建订单</string>
 
 </resources>

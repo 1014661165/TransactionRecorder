@@ -15,16 +15,19 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:launchMode="singleTask">
+            android:launchMode="standard">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CreateItemActivity" />
-        <activity android:name=".CreateOrderActivity" />
-        <activity android:name=".LookItemActivity"></activity>
+        <activity android:name=".CreateItemActivity"
+            android:label="@string/create_item_activity_label"/>
+        <activity android:name=".CreateOrderActivity"
+            android:label="@string/create_order_activity_label"/>
+        <activity android:name=".LookItemActivity"
+            android:label="@string/look_item_activity_label"/>
     </application>
 
 </manifest>

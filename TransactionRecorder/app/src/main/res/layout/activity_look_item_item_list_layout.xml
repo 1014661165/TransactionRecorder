@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:orientation="horizontal"
-    android:background="@color/gray">
+    android:background="@color/gray"
+    android:minHeight="50dp">
 
     <TextView
         android:id="@+id/item_name_view"
@@ -12,8 +13,7 @@
         android:textSize="20sp"
         android:textColor="@color/black"
         android:layout_weight="1"
-        android:gravity="center"
-        android:text="热干面"/>
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/item_price_view"
@@ -22,8 +22,7 @@
         android:textSize="20sp"
         android:textColor="@color/black"
         android:layout_weight="2"
-        android:gravity="center"
-        android:text="5.0"/>
+        android:gravity="center"/>
 
     <ImageView
         android:id="@+id/delete_item_view"

@@ -22,5 +22,8 @@
 
     <!-- CreateOrderActivity -->
     <string name="create_order_activity_label">新建订单</string>
+    <string name="eat_in_radio_text">堂食</string>
+    <string name="take_out_radio_text">外带</string>
+    <string name="add_order_btn_text">添加订单</string>
 
 </resources>

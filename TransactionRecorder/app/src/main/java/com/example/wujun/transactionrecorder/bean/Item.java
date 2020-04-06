@@ -1,9 +1,11 @@
 package com.example.wujun.transactionrecorder.bean;
 
+import java.io.Serializable;
+
 /**
  * 物品类
  */
-public class Item {
+public class Item implements Serializable{
 
     private int id;
     private String name;
@@ -40,5 +42,9 @@ public class Item {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public Item clone(){
+        return new Item(id, name, price);
     }
 }

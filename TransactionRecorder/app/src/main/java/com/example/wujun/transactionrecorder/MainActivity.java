@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         initUI();
         PermissionUtil.requestPermissions(this);
         createRootDir();
+        Application.loadItems();
     }
 
     @Override

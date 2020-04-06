@@ -3,6 +3,7 @@ package com.example.wujun.transactionrecorder;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.wujun.transactionrecorder.app.Application;
 import com.example.wujun.transactionrecorder.bean.Item;
 
@@ -61,6 +63,14 @@ public class LookItemActivity extends AppCompatActivity {
                 }
             });
 
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(LookItemActivity.this, CreateItemActivity.class);
+                    intent.putExtra("item", item);
+                    startActivity(intent);
+                }
+            });
 
             return view;
         }

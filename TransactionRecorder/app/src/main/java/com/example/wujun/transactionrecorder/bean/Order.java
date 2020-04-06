@@ -1,27 +1,30 @@
 package com.example.wujun.transactionrecorder.bean;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * 订单类
  */
-public class Order {
+public class Order implements Serializable{
 
     private int id;
-    private String orderId;
     private String createTime;
     private float totalPrice;
     private List<Item> items;
+    private boolean takeOut;
 
     public Order() {
+        items = new ArrayList<>();
     }
 
-    public Order(int id, String orderId, String createTime, float totalPrice, List<Item> items) {
+    public Order(int id, String createTime, float totalPrice, List<Item> items, boolean takeOut) {
         this.id = id;
-        this.orderId = orderId;
         this.createTime = createTime;
         this.totalPrice = totalPrice;
         this.items = items;
+        this.takeOut = takeOut;
     }
 
     public int getId() {
@@ -30,14 +33,6 @@ public class Order {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
     }
 
     public String getCreateTime() {
@@ -62,5 +57,13 @@ public class Order {
 
     public void setItems(List<Item> items) {
         this.items = items;
+    }
+
+    public boolean isTakeOut() {
+        return takeOut;
+    }
+
+    public void setTakeOut(boolean takeOut) {
+        this.takeOut = takeOut;
     }
 }

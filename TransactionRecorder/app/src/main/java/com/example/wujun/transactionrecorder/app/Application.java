@@ -36,14 +36,13 @@ public class Application extends android.app.Application{
     @Override
     public void onCreate() {
         super.onCreate();
-        loadItems();
     }
 
 
     /**
      * 加载商品
      */
-    private static void loadItems(){
+    public static void loadItems(){
         String filePath = ROOT_DIR + File.separator + "items.json";
         File itemFile = new File(filePath);
         if (!itemFile.exists()){

@@ -19,6 +19,8 @@ import com.example.wujun.transactionrecorder.bean.Item;
 import com.example.wujun.transactionrecorder.bean.Order;
 import com.example.wujun.transactionrecorder.util.DateUtil;
 
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class CreateOrderActivity extends AppCompatActivity {
@@ -128,11 +130,24 @@ public class CreateOrderActivity extends AppCompatActivity {
         addOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (order.getItems().size() == 0){
+                    Application.showMessage(CreateOrderActivity.this, "请至少选择一种商品!");
+                    return;
+                }
+
                 String createTime = DateUtil.format(new Date(), "yyyy-MM-dd HH:mm:ss");
+                String date = DateUtil.format(new Date(), "yyyy-MM-dd");
                 float totalPrice = (float) order.getItems().stream().mapToDouble(i->i.getPrice()).sum();
+                totalPrice = Float.parseFloat(new DecimalFormat("#.0").format(totalPrice));
+
                 order.setCreateTime(createTime);
                 order.setTotalPrice(totalPrice);
-                Log.i(TAG, JSONObject.toJSONString(order));
+                if (!Application.orders.containsKey(date)){
+                    Application.orders.put(date, new ArrayList<>());
+                }
+                Application.orders.get(date).add(0, order);
+                Application.showMessage(CreateOrderActivity.this, "订单添加成功");
+                finish();
             }
         });
 

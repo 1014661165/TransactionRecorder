@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.alibaba.fastjson.JSONArray;
 import com.example.wujun.transactionrecorder.bean.Item;
 import com.example.wujun.transactionrecorder.bean.Order;
+import com.example.wujun.transactionrecorder.util.DateUtil;
 import com.example.wujun.transactionrecorder.util.FileUtil;
 
 import java.io.BufferedWriter;
@@ -17,7 +18,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Application extends android.app.Application{
@@ -29,8 +33,9 @@ public class Application extends android.app.Application{
      */
     public static final String ROOT_DIR = Environment.getExternalStorageDirectory() + "/TransactionRecorder";
 
+    public static final String ORDER_DIR = ROOT_DIR + "/Orders";
 
-    public static List<Order> orders;
+    public static Map<String, List<Order>> orders = new HashMap<>();
     public static List<Item> items;
 
     @Override
@@ -70,6 +75,56 @@ public class Application extends android.app.Application{
             FileUtil.writeAllText(filePath, json);
         }catch (IOException e){
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * 加载订单
+     */
+    public static void loadOrders(){
+        String orderDirPath = ROOT_DIR + File.separator + "orders";
+        File orderDir = new File(orderDirPath);
+        orders = new HashMap<>();
+        if (!orderDir.exists()){
+            return;
+        }
+        File[] orderFiles = orderDir.listFiles();
+        if (orderFiles == null || orderFiles.length == 0){
+            return;
+        }
+
+        for (File f: orderFiles){
+            try {
+                String fileName = f.getName();
+                String date = fileName.substring(0, fileName.lastIndexOf(".json"));
+
+                String json = FileUtil.readAllText(f.getAbsolutePath());
+                List<Order> currentOrders = JSONArray.parseArray(json, Order.class);
+                orders.put(date, currentOrders);
+            }catch (Exception e){
+                e.printStackTrace();
+                Log.e(TAG, e.toString());
+            }
+        }
+    }
+
+    /**
+     * 保存订单
+     */
+    public static void saveOrders(){
+        String date = DateUtil.format(new Date(), "yyyy-MM-dd");
+        if (!orders.containsKey(date)){
+            return;
+        }
+        List<Order> todayOrders = orders.get(date);
+        try {
+            String json = JSONArray.toJSONString(todayOrders);
+            String path = String.format("%s/%s.json", ORDER_DIR, date);
+            FileUtil.writeAllText(path, json);
+            Log.i(TAG, "save orders...");
+        }catch (IOException e){
+            e.printStackTrace();
+            Log.e(TAG, e.toString());
         }
     }
 

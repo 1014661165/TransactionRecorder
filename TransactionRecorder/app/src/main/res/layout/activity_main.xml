@@ -30,8 +30,9 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/record_list_view"
+        android:id="@+id/order_list_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:dividerHeight="10dp"/>
 
 </LinearLayout>
